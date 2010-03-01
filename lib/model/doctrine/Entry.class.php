@@ -68,7 +68,7 @@ class Entry extends BaseEntry
    * @access public
    * @return array
    */
-  public static function getSummary($entries)
+  public static function getSummary($entries, $formated = false)
   {
     $summary = array(
       'delta' => 0,
@@ -79,6 +79,10 @@ class Entry extends BaseEntry
       $summary['sum'] += $entry->minutes;
       $summary['occurences'] += $entry->occurences;
       $summary['delta'] += $entry->getDelta();
+    }
+    if ($formated) {
+      $summary['sum'] = TimeHelper::formatTime($summary['sum']);
+      $summary['delta'] = TimeHelper::formatTime($summary['delta']);
     }
     return $summary;
   }

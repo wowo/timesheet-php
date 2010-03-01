@@ -1,4 +1,16 @@
-<h2>Lista wpisów na miesiąc <?php echo $month ?></h2>
+<h2>Lista wpisów na miesiąc <?php echo $month ?> <?php echo $year ?></h2>
+
+<?php if ($form): ?>
+  <?php echo $form->renderFormTag('entries/add') ?>
+    <table>
+      <?php echo $form ?>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input type="submit" value="Dodaj" /></td>
+      </tr>
+    </table>
+  </form>
+<?php endif ?>
 
 <table>
   <thead>
@@ -21,12 +33,12 @@
   <tbody>
     <?php if(count($entries) > 0): ?>
       <?php foreach($entries as $day => $entry): ?>
-        <tr class="<?php echo $entry->isDeltaNegative() ? 'minus' : '' ?>">
-          <td><?php echo $day ?></td>
-          <td><?php echo $entry->getDayLiteral() ?></td>
-          <td><?php echo TimeHelper::formatTime($entry->getWorkingTime()) ?></td>
-          <td><?php echo TimeHelper::formatTime($entry->getDelta()) ?></td>
-          <td><?php echo $entry->occurences ?></td>
+        <tr id="entry-<?php echo $day ?>" class="<?php echo $entry->isDeltaNegative() ? 'minus' : '' ?>">
+          <td class="day"><?php echo $day ?></td>
+          <td class="dayLiteral"><?php echo $entry->getDayLiteral() ?></td>
+          <td class="workingTime"><?php echo TimeHelper::formatTime($entry->getWorkingTime()) ?></td>
+          <td class="delta"><?php echo TimeHelper::formatTime($entry->getDelta()) ?></td>
+          <td class="occurences"><?php echo $entry->occurences ?></td>
         </tr>
       <?php endforeach ?>
     <?php else: ?>
