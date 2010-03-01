@@ -20,27 +20,8 @@ class EntryTable extends Doctrine_Table
       ->from('Entry INDEXBY day')
       ->addWhere('month(entry_date) = ?', (int)$month)
       ->addWhere('year(entry_date)  = ?', (int)$year)
-      ->groupBy('entry_date');
+      ->groupBy('entry_date')
+      ->orderBy('entry_date');
     return $query->execute();
   }
-
-  /**
-   * find entries for given date groupped by day
-   * 
-   * @param mixed $date 
-   * @access public
-   * @return void
-   */
-  public function findEntriesForDateGroupped($date)
-  {
-    $query = Doctrine_Query::create()
-      ->select('entry_date')
-      ->addSelect('sum((time_to_sec(stop_time) - time_to_sec(start_time)) / 60) AS minutes')
-      ->addSelect('count(*) AS occurences')
-      ->from('Entry')
-      ->addWhere('entry_date = ?', $date)
-      ->groupBy('entry_date');
-    return $query->fetchOne();
-  }
-     
 }

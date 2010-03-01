@@ -1,7 +1,8 @@
+<? use_javascript('entry') ?>
 <h2>Lista wpisów na miesiąc <?php echo $month ?> <?php echo $year ?></h2>
 
 <?php if ($form): ?>
-  <?php echo $form->renderFormTag('entries/add') ?>
+  <?php echo $form->renderFormTag('entries/add', array('id' => 'entryAdd')) ?>
     <table>
       <?php echo $form ?>
       <tr>
@@ -12,7 +13,7 @@
   </form>
 <?php endif ?>
 
-<table>
+<table id="entries">
   <thead>
     <tr>
       <th>Dzień</th>
@@ -25,9 +26,9 @@
   <tfoot>
     <tr>
       <th colspan="2"></th>
-      <th id="sum"><?php echo TimeHelper::formatTime($summary['sum']) ?></th>
-      <th id="delta"><?php echo TimeHelper::formatTime($summary['delta']) ?></th>
-      <th id="occurences"><?php echo $summary['occurences'] ?></th>
+      <th class="sum"><?php echo TimeHelper::formatTime($summary['sum']) ?></th>
+      <th class="delta"><?php echo TimeHelper::formatTime($summary['delta']) ?></th>
+      <th class="occurences"><?php echo $summary['occurences'] ?></th>
     </tr>
   </tfoot>
   <tbody>
@@ -42,7 +43,7 @@
         </tr>
       <?php endforeach ?>
     <?php else: ?>
-      <tr>
+      <tr class="empty">
         <td colspan="5">Brak wpisów</td>
       </tr>
     <?php endif ?>

@@ -55,11 +55,12 @@ class entriesActions extends sfActions
         $entry = $entries[(int)$postData['entry_date']['day']];
         $result = array(
           'entry'   => array(
-            'day' => $entry->day,
+            'day' => (int)$entry->day,
             'dayLiteral' => $entry->getDayLiteral(),
             'workingTime' => TimeHelper::formatTime($entry->getWorkingTime()),
             'delta' => TimeHelper::formatTime($entry->getDelta()),
             'occurences' => $entry->occurences,
+            'isDeltaNegative' => $entry->isDeltaNegative(),
           ),
           'summary' => Entry::getSummary($entries, true),
         );
