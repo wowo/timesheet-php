@@ -1,0 +1,4 @@
+Timesheet
+Simple Timesheet Application written in symfony 1.2
+
+You can easily run this app under Apache web server - please use config/vhost.conf and set some dns or /etc/hosts entry
