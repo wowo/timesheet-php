@@ -1,0 +1,11 @@
+Entry:
+  tableName: entries
+  columns:
+    entry_date: date
+    start_time: time
+    stop_time:  time
+  actAs:
+    Timestampable:
+  options:
+    symfony:
+      filter: false
