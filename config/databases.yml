@@ -2,6 +2,13 @@ all:
   doctrine:
     class: sfDoctrineDatabase
     param:
+      dsn: 'mysql:host=sql5.progreso.pl;dbname=wowo86_timesheet'
+      username: wowo86_timesheet
+      password: timeszit12
+local:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
       dsn: 'mysql:host=localhost;dbname=timesheet'
       username: timesheet
       password: sheet123time

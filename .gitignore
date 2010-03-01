@@ -1,3 +1,5 @@
 /cache/
 /log/
 *.swp
+/web/frontend_dev.php
+/web/index.php
