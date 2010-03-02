@@ -1,4 +1,9 @@
 Timesheet
-Simple Timesheet Application written in symfony 1.2
+Simple Timesheet Application written in symfony 1.4
+
+Author: Wojciech Sznapka <wojciech@sznapka.pl>
 
 You can easily run this app under Apache web server - please use config/vhost.conf and set some dns or /etc/hosts entry
+After configuring webserver, please copy frontcontroller web/index.php.sample to web/index.php and choose proper environment
+(it could easy switch between databases in different servers). After it - configure config/databases.yml - add your dsn.
+When everything is configured you should symfony doctrine:build --all -to load sql to database.
