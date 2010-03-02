@@ -17,6 +17,7 @@ class entriesActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
+    $this->getContext()->getConfiguration()->loadHelpers('Date');
     $month = $request->getParameter('month', date('m'));
     $year  = $request->getParameter('year',  date('Y'));
     if ($month == date('m') && $year == date('Y')) {
@@ -29,7 +30,7 @@ class entriesActions extends sfActions
 
     $this->entries = $entries;
     $this->form    = $form;
-    $this->month = strftime('%B', strtotime(implode('-', array(1, $month, $year))));
+    $this->month = format_date(strtotime(implode('-', array(1, $month, $year))), 'MMMM');
     $this->summary = Entry::getSummary($entries);
     $this->year = $year;
   }

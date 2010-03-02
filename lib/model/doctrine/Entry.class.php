@@ -20,7 +20,8 @@ class Entry extends BaseEntry
    */
   public function getDayLiteral()
   {
-    return strftime('%A', strtotime($this->entry_date));
+    sfContext::getInstance()->getConfiguration()->loadHelpers('Date');
+    return format_date(strtotime($this->entry_date), 'dddd');
   }
 
   /**

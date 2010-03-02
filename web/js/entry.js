@@ -30,8 +30,9 @@ $('document').ready(function() {
           if (data.entry.isDeltaNegative) {
             newRow.addClass('minus');
           }
-          for (var key in ['day', 'dayLiteral', 'workingTime', 'delta', 'occurences']) {
-            newRow.append($('<td>').addClass(key).html(data.entry[key]).fadeOut(50).fadeIn(100));
+          var keys = ['day', 'dayLiteral', 'workingTime', 'delta', 'occurences'];
+          for (var i = 0; i < keys.length; i++) {
+            newRow.append($('<td>').addClass(keys[i]).html(data.entry[keys[i]]));
           }
           if (maxDay > 0) {
             $('#entries .day[innerHTML=' + maxDay +']').parent('tr').after(newRow.fadeOut(50).fadeIn(100));

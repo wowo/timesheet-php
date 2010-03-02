@@ -1,5 +1,5 @@
 <? use_javascript('entry') ?>
-<h2>Lista wpisów na miesiąc <?php echo $month ?> <?php echo $year ?></h2>
+<h2>Lista wpisów dla miesiąca <?php echo $month ?> <?php echo $year ?></h2>
 
 <?php if ($form): ?>
   <?php echo $form->renderFormTag('entries/add', array('id' => 'entryAdd')) ?>
