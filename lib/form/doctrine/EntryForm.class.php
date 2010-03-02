@@ -31,5 +31,8 @@ class EntryForm extends BaseEntryForm
       ->setDefault('entry_date', date('Y-m-d'))
       ->setDefault('start_time', '8:00')
       ->setDefault('stop_time' , '16:00');
+    
+    $this->validatorSchema['entry_date']->setMessage('invalid', 'Proszę wprowadzić poprawny dzień miesiąca');
+    $this->mergePostValidator(new TimeRangeValidator('start_time', 'stop_time'));
   }
 }

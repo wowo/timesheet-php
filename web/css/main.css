@@ -88,3 +88,13 @@ input.submit {
   font-weight: bold;
   border: 1px solid;
 }
+
+.error {
+  background: #F1B1B1 !important;
+}
+
+.validation {
+  margin-left: 20px;
+  font-weight: bold;
+  max-width: 300px;
+}

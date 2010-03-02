@@ -1,5 +1,7 @@
 $('document').ready(function() {
   $('#entryAdd').submit(function () {
+    $('.error').removeClass('error');
+    $('.validation').remove();
 
     $.ajax({
       type: $(this).attr('method'),
@@ -28,7 +30,7 @@ $('document').ready(function() {
           if (data.entry.isDeltaNegative) {
             newRow.addClass('minus');
           }
-          for (var key in data.entry) {
+          for (var key in ['day', 'dayLiteral', 'workingTime', 'delta', 'occurences']) {
             newRow.append($('<td>').addClass(key).html(data.entry[key]).fadeOut(50).fadeIn(100));
           }
           if (maxDay > 0) {
@@ -44,7 +46,14 @@ $('document').ready(function() {
         $('#entries tfoot .occurences').html(data.summary.occurences).fadeOut(50).fadeIn(100);
       },
       error: function (response) {
-        if (response.code == 409) { //validation problems
+        if (response.status == 409) { //validation problems
+          data = eval('(' + response.responseText + ')');
+          for (var key in data.fields) {
+            $('[name*=entry[' + key + ']]').after('<span class="validation">' + data.fields[key] + '</span>').parents('tr').addClass('error');
+          }
+          for (var key in data.global) {
+            $('#entryAdd tr:last').before('<tr class="error validation"><td colspan="2" class="validation">' + data.global[key] + '</td></tr>');
+          }
         } else {
           alert(response.responseText);
         }
