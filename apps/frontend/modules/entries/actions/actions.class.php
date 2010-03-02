@@ -25,6 +25,7 @@ class entriesActions extends sfActions
     } else {
       $form = NULL;
     }
+    $this->getLogger()->notice(sprintf("Retrieved entries for: %d-%02d from IP: %s", $year, $month, $_SERVER['REMOTE_ADDR']));
 
     $entries = Doctrine::getTable('Entry')->findForMonthGroupped($month, $year);
 
@@ -52,6 +53,7 @@ class entriesActions extends sfActions
       $form->bind($postData);
       if ($form->isValid()) {
         $form->save();
+        $this->getLogger()->notice(sprintf("Saved entry #%d from IP: %s", $form->getObject()->id, $_SERVER['REMOTE_ADDR']));
         $entries = Doctrine::getTable('Entry')->findForMonthGroupped(date('m'), date('Y'));
         $entry = $entries[(int)$postData['entry_date']['day']];
         $result = array(
