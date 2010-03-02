@@ -8,7 +8,7 @@ class EntryTable extends Doctrine_Table
    * @param mixed $month 
    * @param mixed $year 
    * @access public
-   * @return void
+   * @return Entry[]
    */
   public function findForMonthGroupped($month, $year)
   {
@@ -22,6 +22,21 @@ class EntryTable extends Doctrine_Table
       ->addWhere('year(entry_date)  = ?', (int)$year)
       ->groupBy('entry_date')
       ->orderBy('entry_date');
+    return $query->execute();
+  }
+
+  /**
+   * find months (with years) in which user has entries
+   * 
+   * @access public
+   * @return Entry[]
+   */
+  public function findAvailableMonths()
+  {
+    $query = Doctrine_Query::create()
+      ->select('DISTINCT month(entry_date) AS month, year(entry_date) AS year')
+      ->from('Entry')
+      ->orderBy('entry_date DESC');
     return $query->execute();
   }
 }

@@ -2,7 +2,7 @@ homepage:
   url:   /
   param: {module: entries, action: index}
 
-entries_in_month:
+entry:
   url:  /:year/:month
   param: {module: entries, action: index}
   requirements: {year: \d+, month: \d+}

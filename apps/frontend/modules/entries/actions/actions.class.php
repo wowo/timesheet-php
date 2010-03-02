@@ -30,9 +30,9 @@ class entriesActions extends sfActions
 
     $this->entries = $entries;
     $this->form    = $form;
-    $this->month = format_date(strtotime(implode('-', array(1, $month, $year))), 'MMMM');
+    $this->month   = $month; 
     $this->summary = Entry::getSummary($entries);
-    $this->year = $year;
+    $this->year    = $year;
   }
 
   /**
