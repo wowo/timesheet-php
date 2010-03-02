@@ -1,0 +1,90 @@
+body {
+  background: #A6CAF0;
+  color: #402000;
+  font-family: tahoma, sans-serif;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+#top {
+  background: #2777B5;
+  color: #fff;
+}
+
+
+#content,
+#top {
+  padding: 10px;
+}
+
+#top a {
+  color: #fff;
+}
+
+a:link,
+a:visited {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+table {
+  margin: 10px 0;
+}
+
+thead tr,
+tfoot tr {
+  background: #2777B5;
+  color: #fff;
+}
+
+thead th,
+tfoot th {
+  padding: 4px 12px 4px 8px;
+  text-align: left;
+}
+
+form tbody th {
+  text-align: right;
+  padding-left: 5px;
+}
+
+tbody tr,
+tbody tr:nth-child(odd) {
+  background-color: #F8FCE9;
+}
+tbody tr:nth-child(even) {
+  background-color:#F1F9CF;
+}
+
+td {
+  text-align: left;
+  padding: 3px 8px;
+}
+
+.delta,
+.workingTime,
+.sum {
+  text-align: right;
+  padding-right: 8px;
+}
+
+.minus .delta {
+  color: red;
+}
+
+select,
+input,
+textarea {
+  background-color: #FFA040;
+}
+
+input.submit {
+  padding: 2px 20px;
+  font-weight: bold;
+  border: 1px solid;
+}

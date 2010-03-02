@@ -3,28 +3,35 @@
 
 <?php if ($form): ?>
   <?php echo $form->renderFormTag('entries/add', array('id' => 'entryAdd')) ?>
-    <table>
-      <?php echo $form ?>
-      <tr>
-        <td>&nbsp;</td>
-        <td><input type="submit" value="Dodaj" /></td>
-      </tr>
+    <table cellspacing="0">
+      <thead>
+        <tr>
+          <th colspan="2">Nowy wpis czasu pracy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php echo $form ?>
+        <tr>
+          <td>&nbsp;</td>
+          <td><input class="submit" type="submit" value="Dodaj" /></td>
+        </tr>
+      </tbody>
     </table>
   </form>
 <?php endif ?>
 
-<table id="entries">
+<table id="entries" cellspacing="0">
   <thead>
     <tr>
-      <th>Dzień</th>
-      <th>Słownie</th>
-      <th>Czas pracy</th>
-      <th>Odchylenie</th>
-      <th>Ilość wpisów</th>
+      <th class="day">Dzień</th>
+      <th class="dayLiteral">Słownie</th>
+      <th class="workingTime">Czas pracy</th>
+      <th class="delta">Odchylenie</th>
+      <th class="occurences">Wpisów</th>
     </tr>
   </thead>
   <tfoot>
-    <tr>
+    <tr class="<?php echo ($summary['delta'] < 0) ? 'minus' : '' ?>">
       <th colspan="2"></th>
       <th class="sum"><?php echo TimeHelper::formatTime($summary['sum']) ?></th>
       <th class="delta"><?php echo TimeHelper::formatTime($summary['delta']) ?></th>

@@ -9,6 +9,15 @@
     <?php include_javascripts() ?>
   </head>
   <body>
-    <?php echo $sf_content ?>
+    <div id="container">
+      <div id="top">
+        <h1><?php echo link_to('Timesheet - osobista karta pracy', '@homepage') ?></h1>
+      </div>
+      <div id="content">
+        <?php echo $sf_content ?>
+      </div>
+      <div id="footer">
+      </div>
+    </div>
   </body>
 </html>
