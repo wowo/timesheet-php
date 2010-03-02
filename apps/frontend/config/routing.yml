@@ -1,16 +1,15 @@
-# You can find more information about this file on the symfony website:
-# http://www.symfony-project.org/reference/1_4/en/10-Routing
-
-# default rules
 homepage:
   url:   /
-  param: { module: entries, action: index }
+  param: {module: entries, action: index}
 
-# generic rules
-# please, remove them by adding more specific rules
+entries_in_month:
+  url:  /:year/:month
+  param: {module: entries, action: index}
+  requirements: {year: \d+, month: \d+}
+
 default_index:
   url:   /:module
-  param: { action: index }
+  param: {action: index}
 
 default:
   url:   /:module/:action/*
