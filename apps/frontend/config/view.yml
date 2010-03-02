@@ -6,11 +6,11 @@ default:
     content-type: text/html
 
   metas:
-    #title:        symfony project
-    #description:  symfony project
-    #keywords:     symfony, project
-    #language:     en
-    #robots:       index, follow
+    title:        Timesheet - osobista karta pracy
+    description:  Timesheet - osobista karta pracy
+    editor:       vim
+    language:     pl
+    robots:       noindex, nofollow
 
   stylesheets:    [main.css]
 
